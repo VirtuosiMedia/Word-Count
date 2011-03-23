@@ -1,0 +1,9 @@
+---
+ name: Static Text Demo
+ description: This demo shows how Word Count can be used to count static text on a click event.
+ authors:
+   - Virtuosi Media  
+ resources:
+   - https://github.com/VirtuosiMedia/Word-Count/raw/master/Source/word-count.js
+ normalize_css: no
+ ...

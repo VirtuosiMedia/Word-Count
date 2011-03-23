@@ -1,0 +1,9 @@
+---
+ name: Text Demo
+ description: This demo shows how Word Count can be used with a text input to count live typing.
+ authors:
+   - Virtuosi Media  
+ resources:
+   - https://github.com/VirtuosiMedia/Word-Count/raw/master/Source/word-count.js
+ normalize_css: no
+ ...

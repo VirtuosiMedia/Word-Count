@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Documentation for the Word Count MooTools Plugin</title>
+</head>
+<body>
+<a name="top"><h1>Word Count</h1></a>
+
+<a name="description" class="smoothscroll"><h2>Description</h2></a>
+
+<p>Word Count is a JavaScript word and character counter based on MooTools 1.3. It can count static text or text being entered into a form element, as it's being typed. It's simple to use and has been tested in IE6+, Firefox, Chrome, Opera, and Safari.</p>
+
+<a name="contents" class="smoothscroll"><h2>Contents</h2></a>
+
+<ul>
+	<li><a href="#description">Description</a></li>
+	<li><a href="#contents">Contents</a></li>
+	<li><a href="#demos">Demos</a></li>
+	<li><a href="#license">License</a></li>
+	<li><a href="#features">Features</a></li>
+	<li><a href="#dependencies">Dependencies</a></li>
+	<li><a href="#tutorial">A Quick Tutorial</a></li>	
+	<li><a href="#documentation">Documentation</a></li>
+</ul>
+
+<a name="demos" class="smoothscroll"><h2>Demos</h2></a>
+
+<ul>
+	<li><a href="../Demos/Static/">Static Text Demo</a></li>
+	<li><a href="../Demos/Text/">Text Input Demo</a></li>
+	<li><a href="../Demos/Textarea/">Textarea Demo</a></li>
+</ul>
+
+<p><a href="#top">Top</a> | <a href="#contents">Contents</a></p>
+
+<a name="license" class="smoothscroll"><h2>License</h2></a>
+
+<p>Word Count is released under the open-source <a href="http://www.opensource.org/licenses/mit-license.php" rel="nofollow">MIT License</a>.</p>
+
+<p><a href="#top">Top</a> | <a href="#contents">Contents</a></p>
+
+<a name="features" class="smoothscroll"><h2>Features</h2></a>
+
+<ul>
+	<li>Simple out of the box</li>
+	<li>Unobtrusive - requires no changes to existing (X)HTML markup</li>
+	<li>Degrades gracefully</li>
+	<li>Cross browser - tested in Internet Explorer 6+, Firefox, Safari, Opera, and Chrome</li>
+	<li>Customizable styling - 100% CSS styling.</li>
+	<li>8 configurable options </li>
+	<li>Choose a word count, a character count, or both</li>
+	<li>Customizable text - The outputted text can be changed according to preference or language.</li>
+</ul>
+
+<p><a href="#top">Top</a> | <a href="#contents">Contents</a></p>
+
+<a name="dependencies" class="smoothscroll"><h2>Dependencies</h2></a>
+
+<p>Word Count requires the <a href="http://mootools.net" rel="nofollow">MooTools JavaScript framework</a>. Specifically, it requires the complete <a href="http://mootools.net/core" rel="nofollow">MooTools Core</a> (but not <a href="http://mootools.net/more" rel="nofollow">MooTools More</a>) file.</p>
+
+<p><a href="#top">Top</a> | <a href="#contents">Contents</a></p>
+
+<a name="tutorial" class="smoothscroll"><h2>A Quick Tutorial</h2></a>
+
+<p>Let's build a small form and count the text as it is being typed. Word Count requires the MooTools library, so we'll need to download the entire <a href="http://mootools.net/core" rel="nofollow">MooTools 1.2 Core file</a>. Go download it quickly if you don't already have it. Don't forget to download a copy of Word Count as well.</p>
+
+<p>If you're new to JavaScript (or MooTools), you'll find the implementation of Word Count fairly easy. Word Count requires no changes to your form whatsoever; it works with what you already have. We'll start with constructing our HTML form. Since we don't need a complicated form for this tutorial, we're just going to include a textarea and a target for the word count to be displayed.</p>
+
+<pre class="html">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;<br />&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;<br />&lt;head&gt;<br />&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=iso-8859-1&quot; /&gt;<br />&lt;title&gt;Word Count Tutorial&lt;/title&gt;<br />&lt;/head&gt;
+
+&lt;body&gt;
+	&lt;form id="wordCount" method="post" action=""&gt;
+		&lt;textarea name="countMe" type=&quot;text&quot; /&gt;
+		&lt;div id="target"&gt;Tell me more about yourself...&lt;/div&gt;
+	&lt;/form&gt;
+&lt;/body&gt;<br />&lt;/html&gt;
+</pre>
+
+<p>That was pretty easy, right? Let's go ahead and add just a little CSS styling to make our form look a little more appetizing. Just for fun, let's use a little CSS3 styling. For this tutorial, we're just going to put it in the head of our XHTML document, but in practice we recommend putting in your stylesheet in a separate file.</p>
+
+<pre class="css">
+&lt;style type=&quot;text/css&quot;&gt;
+	body {margin:0px; padding:0px; background:#333;}
+	textarea {width:300px; height:60px; outline:none; margin-left:10px; border:1px solid; border-color:#000 #999 #999 #000; border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px; padding:5px;}
+	#target {width:300px; height:30px; display:block; border:1px solid; border-color:#FFF #000 #000 #FFF; line-height:30px; margin:10px 10px; border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px; padding:5px; color:#555; text-shadow:#FFF 1px 1px 1px; text-indent:5px; background: #e2e2e2; background: -moz-linear-gradient(top, #e2e2e2 0%, #dbdbdb 50%, #d1d1d1 51%, #fefefe 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e2e2e2), color-stop(50%,#dbdbdb), color-stop(51%,#d1d1d1), color-stop(100%,#fefefe));}
+&lt;/style&gt;
+</pre>
+
+<p>Next we need to add our JavaScript files, MooTools1.3-core.js and word-count.js. We'll put those in the document head as well.</p>
+
+<pre class="html">
+&lt;script type=&quot;text/javascript&quot; src=&quot;mootools-1.3-core.js&quot;&gt;&lt;/script&gt;<br />&lt;script src=&quot;word-count.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</pre>
+
+<p>Now we need to add a little bit of MooTools specific JavaScript. MooTools has a special event called 'domready' that executes whenever the HTML has finished loading. Most MooTools scripts are at least partially executed from within the 'domready' event. Again, we're just going to put this code in the document head, but it could also be in its own file.</p>
+
+<pre>
+&lt;script type=&quot;text/javascript&quot;&gt;
+	window.addEvent('domready', function(){
+		//Our Word Count code will go here
+	});
+&lt;/script&gt;
+</pre>
+
+<p>All of our  code is going to be inserted into the 'domready' event, right where the comment currently is. The first thing we'll need to do is initialize the Word Count class. In this case, we'll use the variable <em>password</em>, but you can use <em>pass</em>, or <em>bob</em>, or whatever you like. We'll set<em>password</em>equal to a new instance of PassMeter. Because the constructor for the PassMeter class has one required argument, the name of the password form element, we're going to enter in the name  'password', surrounded in quotes to make it a string.</p>
+
+<pre>
+&lt;script type=&quot;text/javascript&quot;&gt;
+	window.addEvent('domready', function(){
+		var counter = new WordCount('target', {inputName:'countMe'});
+	});
+&lt;/script&gt;
+</pre>
+
+<p>The constructor for Word Count also has an optional argument for options. Beyond what you can do with CSS, Word Count has 8 different configurable options, but don't let that intimidate you. It's designed to work well out of the box, so that you just have to provide the CSS styling for it. If you want to change an option, you only have to change that option and you can leave the rest of them alone. Let's pretend we need to change our text count to Spanish and that we only want to get a word count. To do that, we'll have to use the option variables of <em>wordText</em> and <em>countChars</em> and assign our new values to them. The options are inserted after the target id argument. Because the options accept more than one option, we need to enclose it in an object. That simply means we'll put curly braces {} around our entire set of options. Each option has two parts: the option name and its value, which are separated by a colon. If you have more than one option, each option should be separated by a comma, except the last one. Sound complicated? It's actually easier than it sounds.</p>
+
+<pre>
+&lt;script type=&quot;text/javascript&quot;&gt;
+	window.addEvent('domready', function(){
+		var counter = new WordCount('target', {
+			inputName:'countMe',
+			wordText: 'palabras',
+			countChars: false
+		});
+	});
+&lt;/script&gt;</pre>
+
+<p>That's all there is to it! Reload your page and you'll see that you'll only get a word count and it will be in Spanish.</p>
+
+<p>This concludes our quick tutorial. If you encounter a bug, have a question or comment, feel free to contact us. We'd also love to know if you're using it on your site. If you liked Word Count, tell someone else about it. Thanks, and enjoy!</p>
+
+<p><a href="#top">Top</a> | <a href="#contents">Contents</a></p>
+
+<a name="documentation" class="smoothscroll">
+<h2>Documentation</h2></a>
+
+<a name="passMeter" class="smoothscroll"><h2>Class: WordCount</h2></a>
+
+<p>This class is for getting word and character counts from text or form inputs.</p> 
+
+<h3>Implements:</h3>
+
+<ul>
+	<li><a href="http://docs.mootools.net/Class/Class.Extras#Events" rel="nofollow">Events</a>, <a href="http://docs.mootools.net/Class/Class.Extras#Options" rel="nofollow">Options</a>
+</ul>
+
+<p><a href="#top">Top</a> | <a href="#contents">Contents</a></p>
+
+<a name="constructor" class="smoothscroll"><h2>WordCount Method: constructor</h2></a>
+
+<p>Word Count is completely unobtrusive and requires no changes to existing markup.</p>
+
+<h3>Syntax:</h3>
+
+<pre class="js">
+var counter = new WordCount(target[, options]);
+</pre>
+
+<h3>Arguments:</h3>
+
+<ol>
+	<li>target - (<em>string</em>) The id of the element to contain the word and character count. Any text in the target element will be replaced.</li>
+	<li>options - (<em>object</em>, optional) Any of the options below.</li>
+</ol>
+
+<h4>Options:</h4>
+
+<ul>
+	<li>inputName - (<em>string</em>, defaults to null) The name of the form element from which text should be retrieved.</li>
+	<li>countWords - (<em>boolean</em>, defaults to true) Whether or not to count words.</li>
+	<li>countChars - (<em>boolean</em>, defaults to true) Whether or not to count characters.</li>
+	<li>charText - (<em>string</em>, defaults to 'characters') The text that follows the number of characters.</li>
+	<li>wordText - (<em>string</em>, defaults to 'words') The text that follows the number of words.</li>
+	<li>separator - (<em>string</em>, defaults to ', ') Whether or not to use the event trigger, set false if you'd like to call the getCount function separately.</li>
+	<li>liveCount - (<em>boolean</em>, defaults to true) Whether or not to count characters.</li>
+	<li>eventTrigger - (<em>string</em>, defaults to 'keyup') The event that triggers the count update.</li>							
+</ul>
+
+<h3>Example:</h3>
+
+<pre class="js">
+window.addEvent('domready', function(){
+	var counter = new WordCount('target', {
+		inputName:'countMe',
+		wordText: 'palabras',
+		countChars: false
+	});
+});
+</pre>
+
+<p><a href="#top">Top</a> | <a href="#contents">Contents</a></p>
+
+<a name="alphanumeric" class="smoothscroll"><h2>WordCount Method: getCount</h2></a>
+
+<p>Gets text count and updates the target element.</p>
+
+<h3>Syntax:</h3>
+
+<pre class="js">
+counter.getCount(text);
+</pre>
+
+<h3>Arguments:</h3>
+
+<ol>
+	<li>text - (<em>string</em>) The text from which a count should be retrieved.</li>
+</ol>
+
+<h3>Example:</h3>
+
+<pre class="js">
+window.addEvent('domready', function(){
+	var counter = new WordCount('target');
+	$('target').addEvent('click', function(){
+		counter.getCount($('text').get('text')); //Assumes an element with the id of 'text' that contains the countable text
+	});
+});
+</pre>
+
+<p><a href="#top">Top</a> | <a href="#contents">Contents</a></p>
+</body>
+</html>

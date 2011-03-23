@@ -6,7 +6,7 @@ You can find a [full tutorial](http://www.virtuosimedia.com/dev/javascript/mooto
 
 ![Screenshot](https://github.com/VirtuosiMedia/Word-Count/raw/master/word-count.png)
 
-*Features*
+**Features**
 
 * Simple out of the box
 * Unobtrusive - requires no changes to existing (X)HTML markup

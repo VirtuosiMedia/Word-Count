@@ -1,3 +1,3 @@
-body {margin:0px; padding:0px; background:#333;}
+body {margin:0px; padding:10px; background:#333;}
 input {width:300px; height:30px; line-height:30px; outline:none; margin-left:10px; border:1px solid; border-color:#000 #999 #999 #000; border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px; padding:5px;}
 #target {width:300px; height:30px; display:block; border:1px solid; border-color:#FFF #000 #000 #FFF; line-height:30px; margin:10px 10px; border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px; padding:5px; color:#555; text-shadow:#FFF 1px 1px 1px; text-indent:5px; background: #e2e2e2; background: -moz-linear-gradient(top, #e2e2e2 0%, #dbdbdb 50%, #d1d1d1 51%, #fefefe 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e2e2e2), color-stop(50%,#dbdbdb), color-stop(51%,#d1d1d1), color-stop(100%,#fefefe));}

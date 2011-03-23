@@ -2,7 +2,7 @@ Word Count
 ===========
 
 Word Count is a JavaScript word and character counter based on MooTools 1.3. It can count static text or text being entered into a form element, as it's being typed. It's simple to use and has been tested in IE6+, Firefox, Chrome, Opera, and Safari.
-You can find a [full tutorial](http://www.virtuosimedia.com/dev/javascript/mootools-plugins/word-count/tutorial), the full [API docs](http://www.virtuosimedia.com/dev/javascript/mootools-plugins/word-count/api-documentation), and [demos](http://www.virtuosimedia.com/dev/javascript/mootools-plugins/word-count/demos) at the [Virtuosi Media website](http://www.virtuosimedia.com/). Also, check out the rest of our [MooTools plugins](http://www.virtuosimedia.com/dev/javascript/mootools-plugins/).
+You can find a [full tutorial](http://www.virtuosimedia.com/dev/javascript/mootools-plugins/word-count/tutorial), the full [API docs](http://www.virtuosimedia.com/dev/javascript/mootools-plugins/word-count/api-documentation), and [demos](http://www.virtuosimedia.com/dev/javascript/mootools-plugins/word-count/demos) at the [Virtuosi Media website](http://www.virtuosimedia.com/). Also, be sure to check out the rest of our [MooTools plugins](http://www.virtuosimedia.com/dev/javascript/mootools-plugins/).
 
 ![Screenshot](https://github.com/VirtuosiMedia/Word-Count/raw/master/word-count.png)
 
